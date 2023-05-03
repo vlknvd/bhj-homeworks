@@ -15,12 +15,20 @@ for (let i = 1; i < 9; i++) {
             dead.textContent = + countDead;
             if(countDead === 10) {
                 alert('Вы победили');
+                countLost = 0;
+                lost.textContent = 0;
+                countDead = 0;
+                dead.textContent = 0;
             }
         } else {
             countLost++;
             lost.textContent = + countLost;
             if(countLost === 5) {
                 alert('Вы проиграли');
+                countLost = 0;
+                lost.textContent = 0;
+                countDead = 0;
+                dead.textContent = 0;
             }
         }
     })

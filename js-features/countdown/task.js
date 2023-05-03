@@ -1,9 +1,10 @@
 const startTimer = document.getElementById('timer');
 
-setInterval(() => {
+let interval = setInterval(() => {
     if(startTimer.textContent >= 1) {
         startTimer.textContent --;
-    } else if (startTimer.textContent = '0') {
+    } else if (startTimer.textContent === '0') {
         alert('Вы победили в конкурсе!');
+        clearInterval(1);
     }
 }, 1000);
