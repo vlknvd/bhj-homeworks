@@ -12,3 +12,4 @@ rotator.forEach((item, index) => {
         count++;
     }, 1000)
 })
+
