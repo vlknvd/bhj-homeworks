@@ -1,15 +1,15 @@
-const rotator = Array.from(document.querySelectorAll('.rotator__case'));
+const rotator = document.querySelector('.rotator__case');
+let currentRotator = rotator;
+let previousRotator = rotator;
 
-rotator.forEach((item, index) => {
-    let count = 0;
-    item = rotator[count];
-    setInterval(()=> {
-        item.classList.remove('rotator__case_active');
-        count++;
-    }, 1000)
-    setInterval(()=>{
-        item.classList.add('rotator__case_active');
-        count++;
-    }, 1000)
-})
-
+setInterval(() => {
+    if (currentRotator.classList.contains('rotator__case_active')) {
+        currentRotator = currentRotator.nextElementSibling;
+        previousRotator = currentRotator.previousElementSibling;
+        if(currentRotator.nextElementSibling === null) {
+            currentRotator = rotator;
+        }
+        currentRotator.classList.add('rotator__case_active');
+        previousRotator.classList.remove('rotator__case_active');
+}
+}, 1000);

@@ -1,7 +1,7 @@
 const reveal = Array.from(document.querySelectorAll('.reveal'));
 console.log(reveal);
-function revealVisible(el) {
-    el.forEach(element => { 
+function revealVisible() {
+    reveal.forEach(element => { 
         const {top, bottom} = element.getBoundingClientRect();
         console.log(top, bottom);
         if(bottom > 0 && top < window.innerHeight) {
@@ -9,6 +9,4 @@ function revealVisible(el) {
         }
     })
 }
-setInterval(() => {
-    revealVisible(reveal);
-});
+window.addEventListener('scroll', revealVisible);
