@@ -14,6 +14,6 @@ for (let i = 0; i < hasTooltip.length; i++) {
 
     hasTooltip[i].addEventListener('click', (event) => {
         event.preventDefault();
-        tooltip.classList.add('tooltip_active');
+        tooltip.classList.toggle('tooltip_active');
     })
 }

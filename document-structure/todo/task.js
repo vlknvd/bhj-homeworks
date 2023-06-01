@@ -1,5 +1,6 @@
 const taskList = document.getElementById('tasks__list');
 const input = document.getElementById('task__input');
+const btn = document.getElementById('tasks__add');
 
 function createTask() {
     const task = document.createElement('div');
@@ -11,10 +12,9 @@ function createTask() {
 
     const taskRemove = document.createElement('a');
     taskRemove.classList.add('task__remove');
-    taskRemove.textContent = '&times;';
+    taskRemove.innerHTML = '&times;';
 
-    task.append(taskTittle, taskRemove);
-    taskList.appendChild(task);
+    taskList.appendChild(task).append(taskTittle, taskRemove);
     
     input.value = "";
     deleteTask(taskRemove);
@@ -26,9 +26,9 @@ function deleteTask(element) {
     })
 }
 
-input.addEventListener('keypress', event => {
-    if (event.key === 'Enter' && input.value.trim()) {
-        event.preventDefault();
+btn.addEventListener('click', event => {
+    event.preventDefault();
+    if (input.value.trim()) {
         createTask();
     }
 })
