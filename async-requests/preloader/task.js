@@ -2,19 +2,22 @@ let xhr = new XMLHttpRequest();
 xhr.open('GET', 'https://students.netoservices.ru/nestjs-backend/slow-get-courses');
 xhr.send();
 
-const code = document.createElement('div');
-code.classList.add('item__code');
+// const code = document.createElement('div');
+// code.classList.add('item__code');
 
-const value = document.createElement('div');
-value.classList.add('item__value');
+// const value = document.createElement('div');
+// value.classList.add('item__value');
 
-const currency = document.createElement('div');
-currency.classList.add('item__currency');
+// const currency = document.createElement('div');
+// currency.classList.add('item__currency');
 
-const item = document.getElementById('items');
-item.append(code, value, currency);
+// const item = document.getElementById('items');
+// item.append(code, value, currency);
 
-const img = document.getElementById('loader');
+// const img = document.getElementById('loader');
+
+// const codeArr= Array.from(code);
+// console.log(codeArr)
 
 xhr.addEventListener('readystatechange', () => {
 
@@ -24,13 +27,25 @@ xhr.addEventListener('readystatechange', () => {
 
     if(xhr.status == 200) {
         let xhrResponse = JSON.parse(xhr.responseText).response['Valute'];
-console.log(xhrResponse)
-        code.innerHTML = xhrResponse.AUD.CharCode;
-        value.innerHTML = xhrResponse.AUD.Value;
 
-        // console.log(code)
-        // if(xhr.response === xhr.DONE) {
-        //     img.classList.remove('loader_active')
-        // }
+        let valueObj = Object.values(xhrResponse);
+        valueObj.forEach(element => {
+            const code = document.createElement('div');
+            code.classList.add('item__code');
+            code.innerText = element.CharCode;
+
+            const value = document.createElement('div');
+            value.classList.add('item__value');
+            value.innerText = element.Value;
+
+            const currency = document.createElement('div');
+            currency.classList.add('item__currency');
+            currency.textContent = 'руб.'
+
+            const item = document.getElementById('items');
+            item.append(code, value, currency);
+        })
+        const img = document.getElementById('loader');
+        img.classList.remove('loader_active');
     }
 })
