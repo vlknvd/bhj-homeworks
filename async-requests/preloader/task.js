@@ -2,30 +2,8 @@ let xhr = new XMLHttpRequest();
 xhr.open('GET', 'https://students.netoservices.ru/nestjs-backend/slow-get-courses');
 xhr.send();
 
-// const code = document.createElement('div');
-// code.classList.add('item__code');
-
-// const value = document.createElement('div');
-// value.classList.add('item__value');
-
-// const currency = document.createElement('div');
-// currency.classList.add('item__currency');
-
-// const item = document.getElementById('items');
-// item.append(code, value, currency);
-
-// const img = document.getElementById('loader');
-
-// const codeArr= Array.from(code);
-// console.log(codeArr)
-
 xhr.addEventListener('readystatechange', () => {
-
-    if(xhr.readyState == 4) {
-        xhr.onreadystatechange = null;
-    }
-
-    if(xhr.status == 200) {
+    if(xhr.readyState === xhr.DONE) {
         let xhrResponse = JSON.parse(xhr.responseText).response['Valute'];
 
         let valueObj = Object.values(xhrResponse);
