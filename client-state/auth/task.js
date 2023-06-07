@@ -2,6 +2,7 @@ const form = document.getElementById('signin__form');
 const btn = document.getElementById('signin__btn');
 const sign = document.getElementById('signin');
 const welcome = document.getElementById('welcome');
+
 btn.addEventListener('click', (event) => {
     event.preventDefault();
     const formData = new FormData(form);

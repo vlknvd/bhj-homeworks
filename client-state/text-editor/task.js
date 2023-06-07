@@ -1,5 +1,4 @@
 const text = document.getElementById('editor');
-
 text.addEventListener('input', (e) => {
     if(localStorage.text) {
         localStorage.text = JSON.stringify(e.target.value);
@@ -7,7 +6,6 @@ text.addEventListener('input', (e) => {
         localStorage.setItem('text', JSON.stringify(e.target.value));
     }
 })
-
 if(localStorage.text){
     text.value = JSON.parse(localStorage.text);
 } else {
