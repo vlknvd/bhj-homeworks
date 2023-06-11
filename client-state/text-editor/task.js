@@ -3,5 +3,4 @@ text.addEventListener('input', (e) => {
     localStorage.getItem('text');
     localStorage.text = e.target.value;
 })
-localStorage.getItem('text');
-text.value = localStorage.text;
+text.value = localStorage.getItem('text');
